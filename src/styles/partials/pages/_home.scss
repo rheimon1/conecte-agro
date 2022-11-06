@@ -1,0 +1,124 @@
+#alimentos {
+	min-height: 100vh;
+	background-repeat: no-repeat;
+	display: block;
+	background-position: left;
+}
+
+#home {
+	position: relative;
+	min-height: 100vh;
+
+	h1 {
+		position: absolute;
+		width: 426px;
+		height: 96px;
+		left: 736px;
+		top: 232px;
+
+		font-family: "Roboto Slab";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 65px;
+		line-height: 86px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		color: #415f33;
+	}
+
+	h1 {
+		position: absolute;
+		width: 426px;
+		height: 96px;
+		left: 736px;
+		top: 232px;
+
+		font-family: "Roboto Slab";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 65px;
+		line-height: 86px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		color: #415f33;
+	}
+
+	h2 {
+		position: absolute;
+		width: 427px;
+		height: 113px;
+		left: 735px;
+		top: 372px;
+
+		font-family: "Roboto Slab";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 35px;
+		line-height: 46px;
+
+		color: #90c290;
+	}
+
+	h3 {
+		position: absolute;
+		width: 411px;
+		height: 316px;
+		left: 735px;
+		top: 476px;
+
+		font-family: "Manrope";
+		font-style: normal;
+		font-weight: 300;
+		font-size: 20px;
+		line-height: 27px;
+
+		color: #000000;
+	}
+
+	button {
+		position: absolute;
+		width: 250px;
+		height: 51px;
+		left: 735px;
+		top: 729px;
+
+		background: #415f33;
+		border-radius: 5px;
+	}
+
+	#alimentos {
+		position: absolute;
+		width: 695px;
+		height: 1024px;
+		left: -14px;
+		top: 0px;
+
+		opacity: 0.6;
+
+		background-repeat: no-repeat;
+	}
+
+	#home_header {
+		display: flex;
+		justify-content: flex-end;
+		font-family: "Manrope";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 27px;
+		display: flex;
+
+		ul {
+			display: flex;
+			margin-top: 1em;
+		}
+
+		ul li {
+			margin-inline: 8em;
+		}
+	}
+}
