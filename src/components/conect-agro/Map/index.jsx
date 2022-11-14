@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback, cloneElement, Children, isValidElement } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 import styles from './Map.module.scss'
@@ -83,33 +83,6 @@ export function Map(props) {
         {markerList.map((markerPos, index) => {
           return <Marker key={index} position={markerPos.position} map={map} /> 
         })}
-        <button onClick={() => setMarkerList([])}>
-          Clear
-        </button>
-        <ul>
-          <li>
-            Current center: {map.getCenter().toString()}
-          </li>
-          {centers.map((center, index) => {
-            return (
-              <li key={index} onClick={() => {
-                setCenter(centers[index])
-                setMarkerList(state => {
-                  return [
-                    ...state,
-                    {
-                      position: centers[index]
-                    }
-                  ]
-                })
-              }}>
-                <span>
-                  {index} - LAT: {center.lat} e LONG:{center.lng}
-                </span>
-              </li>
-            )
-          })}
-        </ul>
       </Wrapper>
 
     </div>
