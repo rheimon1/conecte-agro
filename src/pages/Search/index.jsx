@@ -126,13 +126,13 @@ export function Search(){
               if(index === selectedResult){
                 return (
                   <li key={index}>
-                    <SearchResult {...result} index={index} selected={true}/> 
+                    <SearchResult {...result} index={index+1} selected={true}/> 
                   </li>
                 )
               }
               return (
                 <li key={index}>
-                  <SearchResult {...result} index={index} /> 
+                  <SearchResult {...result} index={index+1} /> 
                 </li>
               )
             })

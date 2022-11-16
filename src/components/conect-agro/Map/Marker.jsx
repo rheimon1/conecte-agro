@@ -7,21 +7,8 @@ import { SearchResult } from "../SearchResult";
 export const Marker = (props) => {
   const [marker, setMarker] = useState();
 
-  const infoWindow = InfoWindow()
-
+  const infoWindow = useInfoWindow(marker);
   console.log(props)
-
-  useEffect(() => {
-    if (!marker) {
-      setMarker(new window.google.maps.Marker());
-    }
-
-    return () => {
-      if (marker) {
-        marker.setMap(null);
-      }
-    };
-  }, [marker]);
 
   useEffect(() => {
     if (!marker) {
@@ -38,31 +25,22 @@ export const Marker = (props) => {
   useEffect(() => {
     if (marker) {
       marker.setOptions({position: props.position, map: props.map});
-      console.log(props.InfoWindow)
-      marker.addListener("click", () => {
-        infoWindow.open({
-          anchor: marker,
-          map: props.map
-        })
-      })
+
     }
-  }, [marker, props, infoWindow]);
+  }, [marker, props]);
+
+
+
+
 
   return null;
 };
 
-function InfoWindow (props) {
-  
-  // const content = `
-  // <div>
-  //   <span>My first infoWindow</span>
-  // </div>
-  // `
 
-  
+function useInfoWindow (marker, content) {
 
   const [infoWindow, setInfoWindow] = useState();
-
+  const [infoWindowOpen, setInfoWindowOpen] = useState(false);
 
   useEffect(() => {
     if (!infoWindow) {
@@ -80,19 +58,53 @@ function InfoWindow (props) {
     
     const contentElement = document.createElement('div')
 
-    if (infoWindow) {
-      infoWindow.setContent(contentElement);
-    }
-
-
     const infoWindowRoot = ReactDOM.createRoot(contentElement)
     infoWindowRoot.render(
-      <SearchResult />
+      <div className={styles.infoWindowContainer}>
+      <img src="/producer-icon.svg" alt="" />
+      <div className={styles.infoWindowContent}>
+        <h2 className={styles.title} >Nome da propriedade</h2>
+        <p className={styles.subTitle}>Nome do produtor</p>
+        <p>Rua XXXXXXX, Bairro XXXX, XX</p>
+        <p>Valinhos/SP</p>
+      </div>
+      <div>
+        <p className={styles.title}>Principais produtos</p>
+            <ul className={styles.productList}>
+              {["Alface", "Tomate"].map((productName, index) => {
+                return (
+                  <li key={index}>
+                    {productName}
+                  </li>
+                )
+              })}
+            </ul>
+      </div>
+    </div>
     )
 
-    return 
-    
-  }, [infoWindow]);
+    if (infoWindow) {
+      infoWindow.setContent(contentElement);
 
-  return infoWindow;
+      marker.addListener("click", () => {
+        if(!infoWindowOpen){
+          setInfoWindowOpen(true)
+          infoWindow.open({
+            anchor: marker,
+            map: marker.getMap()
+          })
+        } else {
+          infoWindow.close()
+          setInfoWindowOpen(false)
+        }
+    })
+    }
+
+    return () => {
+      contentElement.remove()
+    }
+    
+  }, [infoWindow, infoWindowOpen, marker]);
+
+  return infoWindow
 };
