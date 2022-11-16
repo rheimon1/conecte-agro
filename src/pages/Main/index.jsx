@@ -9,7 +9,9 @@ export function Main() {
       <Header />
       <div className={styles.defaultLayout}>
         <Sidebar />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </div>
     </>
   )
