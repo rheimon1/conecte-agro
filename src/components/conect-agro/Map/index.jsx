@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 import styles from './Map.module.scss'
@@ -73,6 +73,7 @@ export function Map(props) {
     }
   }, [map, zoom, center])
 
+
   return (
     <div style={{
       width: '100%',
@@ -81,7 +82,7 @@ export function Map(props) {
         <div ref={changeMap} className={styles['map-container']} />
         <Marker position={{ lat: -24.344, lng: 131.031 }} map={map} />
         {markerList.map((markerPos, index) => {
-          return <Marker key={index} position={markerPos.position} map={map} /> 
+          return <Marker key={index} position={markerPos.position} map={map}/> 
         })}
       </Wrapper>
 
