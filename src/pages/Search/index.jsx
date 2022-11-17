@@ -5,39 +5,18 @@ import styles from './search.module.scss'
 
 function generatePosition(lat, lng) {
 
-  const ops = ['+', '-'];
+  const ops = [1, -1];
 
   const latOperation = ops[Math.round(Math.random() % 2)]
   const lngOperation = ops[Math.round(Math.random() % 2)]
 
-  let newLat;
-  let newLng;
+  let newLat = lat + Math.random() * latOperation
+  let newLng = lng + Math.random() * lngOperation
 
-  switch(latOperation){
-    case '+':
-      newLat = lat + Math.random() * 1
-      break
-      case '-':
-        newLat = lat - Math.random() * 1
-        break
-    default:
-      newLat = lat
-  }
-
-  switch(lngOperation){
-    case '+':
-      newLng = lng + Math.random() * 1
-      break
-      case '-':
-        newLng = lng - Math.random() * 1
-        break
-    default:
-      newLng = lng
-  }
   return {lat: newLat, lng: newLng}
 }
-
-const center = {lat: -23.55507672953943, lng: -46.59944863553904}
+ 
+const center = {lat: -22.279040044371495, lng: -48.97861099476778}
 
 const searchResults1 = [
   {

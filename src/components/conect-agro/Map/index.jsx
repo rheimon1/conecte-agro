@@ -33,7 +33,7 @@ export function MapContextProvider(props){
 }
 
 export function Map(props) {
-  // const [map, setMap] = useState();
+  const [markerClusterer, setMarkerClusterer] = useState();
   const [center, setCenter] = useState(centers[0])
 
   const contextValues = useContext(MapContext)
@@ -88,16 +88,22 @@ export function Map(props) {
   }, [map, setMap])
 
   useEffect(() => {
-    let markerCluterer
-    if(map) {
-      markerCluterer = new MarkerClusterer({map: map, markers: markerList})
+    if(map && !markerClusterer) {
+      setMarkerClusterer(new MarkerClusterer({map: map, markers: markerList}))
+    }
+
+    if(markerClusterer && markerList.length > 0) {
+      markerClusterer.clearMarkers()
+      markerClusterer.addMarkers(markerList)
     }
 
     return (() => {
-      markerCluterer?.clearMarkers()
+      if(markerClusterer){
+        markerClusterer?.clearMarkers()
+      }
     }
     )
-  }, [map, markerList])
+  }, [map, markerList, markerClusterer])
 
 
   return (
