@@ -1,8 +1,11 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Wrapper } from "@googlemaps/react-wrapper";
+import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
 import styles from './Map.module.scss'
 import { Marker } from "./Marker";
+import { createContext } from "react";
+import { useContext } from "react";
 
 const render = (status) => {
 	return <h1>{status}</h1>;
@@ -15,10 +18,30 @@ const centers = [
   { lat: -15.344, lng: 131.031 },
 ]
 
-export function Map(props) {
-  
+export const MapContext = createContext({
+})
+
+export function MapContextProvider(props){
   const [map, setMap] = useState();
+  const [markerList, setMarkerList] = useState([]);
+
+  return (
+    <MapContext.Provider value={{map, setMap, markerList, setMarkerList}}>
+      {props.children}
+    </MapContext.Provider>
+  )
+}
+
+export function Map(props) {
+  // const [map, setMap] = useState();
   const [center, setCenter] = useState(centers[0])
+
+  const contextValues = useContext(MapContext)
+
+  console.log(contextValues )
+
+  const {map, setMap, markerList, setMarkerList} = contextValues;
+
   // const [markerList, setMarkerList] = useState([]);
 
   
@@ -57,20 +80,34 @@ export function Map(props) {
   const changeMap = useCallback((node) => {
     if (node && !map) {  
       setMap(new window.google.maps.Map(node, {
-        zoom: 4,
-        center: center,
+        minZoom: 6,
+        zoom: 6,
+        center: {lat: -23.55507672953943, lng: -46.59944863553904},
       }));
     }
-  }, [map, center])
+  }, [map, setMap])
+
+  useEffect(() => {
+    let markerCluterer
+    if(map) {
+      markerCluterer = new MarkerClusterer({map: map, markers: markerList})
+    }
+
+    return (() => {
+      markerCluterer?.clearMarkers()
+    }
+    )
+  }, [map, markerList])
 
 
   return (
       <Wrapper apiKey={process.env.REACT_APP_API_KEY} render={render}>      
         <div ref={changeMap} className={styles['map-container']} />
-        <Marker position={{ lat: -24.344, lng: 131.031 }} map={map} />
-        {/* {markerList.map((markerPos, index) => {
-          return <Marker key={index} position={markerPos.position} map={map}/> 
-        })} */}
+          {props.searchResults.map((result, index) => {
+            return (
+              <Marker key={index} position={result.position} label={index} content={result}/>
+            )
+          })}
       </Wrapper>
   )
 }

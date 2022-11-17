@@ -1,14 +1,15 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from './Marker.module.scss'
 import ReactDOM from 'react-dom/client';
-import { SearchResult } from "../SearchResult";
+import { MapContext } from ".";
 
 
 export const Marker = (props) => {
   const [marker, setMarker] = useState();
+  const { map, setMarkerList } = useContext(MapContext)
 
-  const infoWindow = useInfoWindow(marker);
-  console.log(props)
+  const infoWindow = useInfoWindow(marker, props.content);
+
 
   useEffect(() => {
     if (!marker) {
@@ -24,14 +25,20 @@ export const Marker = (props) => {
 
   useEffect(() => {
     if (marker) {
-      marker.setOptions({position: props.position, map: props.map});
-
+      marker.setOptions({position: props.position, label: props.label.toString() ,map: map});
     }
-  }, [marker, props]);
+  }, [marker, props, map]);
 
-
-
-
+  useEffect(() => {
+    if(marker) {
+      setMarkerList((state) => {
+        return [
+          ...state,
+          marker
+        ]
+      })
+    }
+  }, [marker, setMarkerList])
 
   return null;
 };
@@ -41,6 +48,18 @@ function useInfoWindow (marker, content) {
 
   const [infoWindow, setInfoWindow] = useState();
   const [infoWindowOpen, setInfoWindowOpen] = useState(false);
+
+  const {
+    index = 1,
+    image = "/producer-icon.svg",
+    propertyName = "Nome da propriedade",
+    producerName = "Nome do produtor",
+    contactNumber = "9 9999-9999",
+    email = "contact@email.com",
+    productList = ["Alface", "Tomate", "Laranja"],
+    slug = "#",
+    selected = false,
+  } = content;
 
   useEffect(() => {
     if (!infoWindow) {
@@ -61,17 +80,17 @@ function useInfoWindow (marker, content) {
     const infoWindowRoot = ReactDOM.createRoot(contentElement)
     infoWindowRoot.render(
       <div className={styles.infoWindowContainer}>
-      <img src="/producer-icon.svg" alt="" />
+      <img src={image} alt="" />
       <div className={styles.infoWindowContent}>
-        <h2 className={styles.title} >Nome da propriedade</h2>
-        <p className={styles.subTitle}>Nome do produtor</p>
+        <h2 className={styles.title} >{propertyName}</h2>
+        <p className={styles.subTitle}>{producerName}</p>
         <p>Rua XXXXXXX, Bairro XXXX, XX</p>
         <p>Valinhos/SP</p>
       </div>
       <div>
         <p className={styles.title}>Principais produtos</p>
             <ul className={styles.productList}>
-              {["Alface", "Tomate"].map((productName, index) => {
+              {productList.map((productName, index) => {
                 return (
                   <li key={index}>
                     {productName}
@@ -84,9 +103,9 @@ function useInfoWindow (marker, content) {
     )
 
     if (infoWindow) {
-      infoWindow.setContent(contentElement);
-
+      
       marker.addListener("click", () => {
+        infoWindow.setContent(contentElement);
         if(!infoWindowOpen){
           setInfoWindowOpen(true)
           infoWindow.open({

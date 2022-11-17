@@ -1,8 +1,45 @@
-import { Map } from "../../components/conect-agro/Map";
+import { useState } from "react";
+import { Map, MapContextProvider } from "../../components/conect-agro/Map";
 import { SearchResult } from "../../components/conect-agro/SearchResult";
 import styles from './search.module.scss'
 
-const searchResults = [
+function generatePosition(lat, lng) {
+
+  const ops = ['+', '-'];
+
+  const latOperation = ops[Math.round(Math.random() % 2)]
+  const lngOperation = ops[Math.round(Math.random() % 2)]
+
+  let newLat;
+  let newLng;
+
+  switch(latOperation){
+    case '+':
+      newLat = lat + Math.random() * 1
+      break
+      case '-':
+        newLat = lat - Math.random() * 1
+        break
+    default:
+      newLat = lat
+  }
+
+  switch(lngOperation){
+    case '+':
+      newLng = lng + Math.random() * 1
+      break
+      case '-':
+        newLng = lng - Math.random() * 1
+        break
+    default:
+      newLng = lng
+  }
+  return {lat: newLat, lng: newLng}
+}
+
+const center = {lat: -23.55507672953943, lng: -46.59944863553904}
+
+const searchResults1 = [
   {
     image: "/producer-icon.svg",
     propertyName: "Recanto da felicidade",
@@ -11,6 +48,7 @@ const searchResults = [
     email: "AlexaBarbosa@email.com",
     productList: ["Tomate", "Laranja"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -20,6 +58,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -29,6 +68,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -38,6 +78,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -47,6 +88,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -56,6 +98,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -65,6 +108,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -74,6 +118,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -83,6 +128,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -92,6 +138,7 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
   {
     image: "/producer-icon.svg",
@@ -101,12 +148,129 @@ const searchResults = [
     email: "BeatrizBaltazar@email.com",
     productList: ["Mamao"],
     slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+]
+
+const searchResults2 = [
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Recanto da felicidade",
+    producerName: "Alexa Barbosa",
+    contactNumber: "11989958546",
+    email: "AlexaBarbosa@email.com",
+    productList: ["Tomate", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
+  },
+  {
+    image: "/producer-icon.svg",
+    propertyName: "Camarote preto e Branco",
+    producerName: "Beatriz Baltazar",
+    contactNumber: "11969840946",
+    email: "BeatrizBaltazar@email.com",
+    productList: ["Mamao", "Laranja"],
+    slug: "#",
+    position: generatePosition(center.lat, center.lng)
   },
 ]
 
 const selectedResult = 0
 
 export function Search(){
+
+  const [searchResults, setSearchResults] = useState(searchResults1);
+
   return(
     <div className={styles.container}>
       <form action="" className={styles.searchBox}>
@@ -117,7 +281,9 @@ export function Search(){
         </div>
         <button type="submit" className={styles.searchButton}>Pesquisar</button>
       </form>
-      <Map />
+      <MapContextProvider>
+        <Map searchResults={searchResults} />
+      </MapContextProvider>
       <div>
         <h2>Resultados para: XXXXXX</h2>
         <ul className={styles.resultsList}>
@@ -139,6 +305,11 @@ export function Search(){
           }
         </ul>
       </div>
+      <button onClick={() => {
+        setSearchResults([...searchResults2])
+      }}>
+        Toggle results
+      </button>
     </div>
   )
 }
