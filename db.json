@@ -1,0 +1,208 @@
+{"producers": [
+  {
+    "name": "Alexa Barbosa",
+    "id": 1,
+    "email": "AlexaBarbosa@email.com",
+    "contact": 11989958546,
+    "propertyName": "Recanto da felicidade",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/2alexa_barbosa",
+    "position": {
+      "lat": -22.531729290184636,
+      "lng": -48.53511809821098
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Bruna Coelho",
+    "id": 2,
+    "email": "BrunaCoelho@email.com",
+    "contact": 11963880579,
+    "propertyName": "Amar é divino",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/5bruna_coelho",
+    "position": {
+      "lat": -21.36374084540229,
+      "lng": -49.90597568057331
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Cleber Evangelista",
+    "id": 3,
+    "email": "CleberEvangelista@email.com",
+    "contact": 11921285979,
+    "propertyName": "Coragem e poesia",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/7cleber_evangelista",
+    "position": {
+      "lat": -22.531729290184636,
+      "lng": -48.53511809821098
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Cleusa Fonseca",
+    "id": 4,
+    "email": "CleusaFonseca@email.com",
+    "contact": 11978144687,
+    "propertyName": "Caminhos de peixes",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/8cleusa_fonseca",
+    "position": {
+      "lat": -21.729151036359255,
+      "lng": -49.492583078588105
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Diego Hernandes",
+    "id": 5,
+    "email": "DiegoHernandes@email.com",
+    "contact": 11919034117,
+    "propertyName": "Cantinho feliz",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/11diego_hernandes",
+    "position": {
+      "lat": -22.28412668484705,
+      "lng": -49.580163834493554
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Elias Lisboa",
+    "id": 6,
+    "email": "EliasLisboa@email.com",
+    "contact": 11977055778,
+    "propertyName": "Beleza do bosque",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/14elias_lisboa",
+    "position": {
+      "lat": -21.74273870721429,
+      "lng": -48.997531700247585
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Fausto Nunes",
+    "id": 7,
+    "email": "FaustoNunes@email.com",
+    "contact": 11933894639,
+    "propertyName": "Montanha alta",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/16fausto_nunes",
+    "position": {
+      "lat": -22.934688215532592,
+      "lng": -48.95453155179731
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Gustavo Pereira",
+    "id": 8,
+    "email": "GustavoPereira@email.com",
+    "contact": 11990306782,
+    "propertyName": "Fênix",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/18gustavo_pereira",
+    "position": {
+      "lat": -22.661153021653195,
+      "lng": -49.04599429357395
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Giovana Queiroz",
+    "id": 9,
+    "email": "GiovanaQueiroz@email.com",
+    "contact": 11916465297,
+    "propertyName": "Piece of sky",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/20giovana_queiroz",
+    "position": {
+      "lat": -23.14287459715419,
+      "lng": -48.4249683257323
+    },
+    "productList": [
+      "Mamao",
+      "Banana"
+    ]
+  },
+  {
+    "name": "Isis Serra",
+    "id": 10,
+    "email": "IsisSerra@email.com",
+    "contact": 11957036504,
+    "propertyName": "wonderful land",
+    "address":{
+      "street": "",
+      "number": "",
+      "city": ""
+    },
+    "image": "/fotos/users/24isis_serra",
+    "position": {
+      "lat": -22.265807195881518,
+      "lng": -48.12906389867676
+    }
+  }
+]}

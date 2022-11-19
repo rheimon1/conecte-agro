@@ -8,8 +8,7 @@ import ProductDetails from "../pages/ProductDetails";
 import ErrorPage from "../pages/ErrorPage";
 import User from "../pages/User";
 import { Main } from "../pages/Main";
-import { Map } from "../pages/Map";
-import { Marker } from "../pages/Map/Marker";
+import { Search } from "../pages/Search";
 
 
 
@@ -21,10 +20,7 @@ const RouterRoutes = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/main" element={<Main />}>
-					<Route path="" element={
-						<Map>
-						</Map>
-					} />
+					<Route path="search" element={<Search />} />
 				</Route>
 				<Route path="/cart" element={<Cart />} />
 				<Route path="/user" element={<User />} />

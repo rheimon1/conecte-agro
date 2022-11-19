@@ -1,11 +1,15 @@
 .defaultLayout {
   display: flex;
-  gap: 5rem;
   margin-top: 3rem;
   height: max(100%, 100vh);
 
 
   aside {
     align-self: center;
+  }
+
+  main {
+    flex: 1;
+    padding: 0 10rem;
   }
 }

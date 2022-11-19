@@ -1,0 +1,39 @@
+.infoWindowContainer {
+  display: flex;
+  padding: .5rem;
+  gap: 2rem;
+  color: black;
+}
+
+.infoWindowContent {
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.625;
+}
+
+.subTitle {
+  margin-bottom: .5rem;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  gap: .5rem;
+
+  margin-top: .5rem;
+
+  li {
+    background: #d9d9d9;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+}
