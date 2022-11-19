@@ -11,13 +11,6 @@ const render = (status) => {
 	return <h1>{status}</h1>;
 };
 
-const centers = [
-  { lat: -25.344, lng: 131.031 },
-  { lat: -25.344, lng: 100.031 },
-  { lat: -30.344, lng: 121.031 },
-  { lat: -15.344, lng: 131.031 },
-]
-
 export const MapContext = createContext({
 })
 
@@ -34,48 +27,14 @@ export function MapContextProvider(props){
 
 export function Map(props) {
   const [markerClusterer, setMarkerClusterer] = useState();
-  const [center, setCenter] = useState(centers[0])
+  const sao_paulo = { lat: -25.344, lng: 131.031 }
+  const [center, setCenter] = useState(sao_paulo)
 
   const contextValues = useContext(MapContext)
 
-  console.log(contextValues )
+  console.log(JSON.stringify(props.searchResults, null, 2))
 
-  const {map, setMap, markerList, setMarkerList} = contextValues;
-
-  // const [markerList, setMarkerList] = useState([]);
-
-  
-
-  // useEffect(() => {
-  //   function onClick(e) {
-  //     console.log(e)
-  //     setMarkerList(state => {
-  //       return [
-  //         ...state,
-  //         {
-  //           position: e.latLng
-  //         }
-  //       ]
-  //     })
-  //     console.log(markerList)
-  //   }
-
-  //   if (map) {
-  //     ["click", "idle"].forEach((eventName) =>
-  //       window.google.maps.event.clearListeners(map, eventName)
-  //     );
-  //     if (onClick) {
-  //       map.addListener("click", onClick);
-  //     }
-  
-  //   }
-  // }, [map, markerList]);
-
-  // useEffect(() => {
-  //   if(map){
-  //     map.setCenter(center)
-  //   }
-  // }, [map, center])
+  const {map, setMap, markerList } = contextValues;
 
   const changeMap = useCallback((node) => {
     if (node && !map) {  

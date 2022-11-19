@@ -19,7 +19,7 @@ function generatePosition(lat, lng) {
 const center = {lat: -22.279040044371495, lng: -48.97861099476778}
 
 const searchResults1 = [
-  {
+  { 
     image: "/producer-icon.svg",
     propertyName: "Recanto da felicidade",
     producerName: "Alexa Barbosa",
