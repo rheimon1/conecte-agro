@@ -1,0 +1,87 @@
+.parent {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .header {
+        margin-bottom: 2em;
+        background-color: var(--bg-color);
+        padding: 20px;
+    }
+}
+
+.main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.content {
+    flex-grow: 1;
+    flex-direction: column;
+
+    .title, .search, .maps {
+        margin-bottom: 1em;
+        max-width: 1000px;
+    }
+
+    .search {
+        input {
+            background-color: #D9D9D9;
+            height: 100%;
+            margin-right: 1em;
+            padding: 10px;
+            width: 85%;
+        }
+
+        button {
+            background-color: var(--bg-color);
+            width: 13%;
+        }
+    }
+
+    .maps {
+        width: 100%;
+    }
+
+    .results {
+        h4 {
+            margin-bottom: 1.5em;
+        }
+
+        .items {
+            display: flex;
+
+            img {
+                margin-right: 1em;
+            }
+        }
+    }
+}
+
+.child {
+    display: flex;
+    margin-bottom: 1%;
+    font-size: 20px;
+    line-height: 20px;
+    color: black;
+    background-color: #fff;
+}
+
+body {
+    font-family: Verdana;
+    font-weight: 600;
+}
+
+.sidebar {
+    margin-right: 1em;
+    border: 1px solid gray;
+    padding: 20px;
+    margin-right: 3em;
+}
+
+.sidebar-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
