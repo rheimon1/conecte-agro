@@ -4,6 +4,7 @@ import FeaturedSlider from "../components/sliders/FeaturedSlider";
 import SectionsHead from "../components/common/SectionsHead";
 import TopProducts from "../components/product/TopProducts";
 import Services from "../components/common/Services";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 	return (
@@ -17,7 +18,7 @@ const Home = () => {
 					<ul>
 						<li>Sobre</li>
 						<li>Contato</li>
-						<li>Entrar</li>
+						<li><Link to="/user">Entrar</Link></li>
 					</ul>
 				</div>
 				<h1>Conecte Agro</h1>

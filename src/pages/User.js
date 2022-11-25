@@ -28,7 +28,7 @@ const User = () => {
 						<h5>Encontre o que você procura: </h5>
 					</div>
 					<form class="search" action="action_page.php">
-						<input type="text" placeholder="Search.." name="search" />
+						<input type="text" name="search" />
 						<button type="submit">Pesquisar</button>
 					</form>
 					<div className="maps">

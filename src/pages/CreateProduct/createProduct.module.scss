@@ -1,0 +1,46 @@
+.container {
+    color: black;
+    max-width: 750px;
+
+    button {
+        background: #415F33;
+    }
+
+    button:hover {
+        background: #415F33;
+        opacity: 0.8;
+    }
+
+    input, textarea {
+        background-color: #D9D9D9;
+        border: 1px solid black;
+        margin-right: 4em;
+        padding: 5px;
+    }
+
+    label {
+        margin-right: 1em;
+    }
+
+    textarea {
+        min-width: 450px;
+        min-height: 100px;
+    }
+}
+
+.title {
+    margin-bottom: 2em;
+}
+
+.formRow {
+    margin-bottom: 2em;
+
+    div {
+        margin-bottom: 0.5em;
+    }
+}
+
+.formSubmit {
+    display: flex;
+    flex-direction: row-reverse;
+}
