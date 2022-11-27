@@ -1,0 +1,33 @@
+- Formulario inclusao produtor 
+	- Formulario produto - OK 
+	- Card produto
+
+- Tela produtor (inclusao produtor sem editar)
+
+- Form Login 
+	Email
+	Senha
+	
+- Form Cadastro
+	Email
+	Senha
+	Perfil - produtor ou consumidor
+	
+
+	  
+
+- Rotas
+
+--------------------------------------------------------
+
+- Inclusao de produto no carrinho
+- Tela do Carrinho
+- Tela transacao (comprador)
+
+- Tela de favoritos (comprador)
+
+--------------------------------------------------------
+
+Adicional
+	- Tela de transacao (produtor)
+	- Perfil do comprador
