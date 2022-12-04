@@ -1,16 +1,62 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { Form, Button } from 'react-bootstrap';
+import { useNavigate, useParams } from "react-router-dom";
 import styles from './createProduct.module.scss';
 
-export function CreateProduct(){
+export function CreateProduct() {
+    const [producer, setProducer] = useState({});
     const [name, setName] = useState("");
-    const [contactPhone, setContactPhone] = useState("");
-    const [contactEmail, setContactEmail] = useState("");
-    const [location, setLocation] = useState("");
-    const [description, setDescription] = useState("");
+    const [reference, setReference] = useState("");
+    const [quantity, setQuantity] = useState(0);
+    const [price, setPrice] = useState(0);
+
+    const { user_id } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const url = `http://localhost:3000/produtor/${user_id}`;
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                const _producer = await response.json();
+                setProducer(_producer);
+            } catch (error) {
+                console.log("error", error);
+            }
+        }
+        
+        fetchData();
+    }, {});
     
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        alert(`Submitting Name ${name}`)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const url = `http://localhost:3000/produtos`;
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "nome": name,
+                "produtorId": parseInt(user_id),
+                "nomeProdutor": producer.nomeProdutor,
+                "quantidade": quantity,
+                "ref": reference,
+                "estado": "SP",
+                "preco": price,
+                "imagem": "/fotos/products/tomate2.jpg",
+            })
+        };
+
+        const response = await fetch(url, requestOptions);
+
+        console.log(response);
+
+        navigate(`/main/producer/${user_id}`);
+
+        alert(`Produto criado com sucesso!`);
     }
 
   return(
@@ -18,35 +64,27 @@ export function CreateProduct(){
         <div className={styles.title}>
             <h1>Adicionar Produtos</h1>
         </div>
-        <form onSubmit={handleSubmit}>
-            <div className={styles.formRow}>
-                <label>Produto: </label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} />
-                
-                <label>Local: </label>
-                <input type="text" value={location} onChange={e => setLocation(e.target.value)} placeholder="Rua Exemplo, 1234"/>
-            </div>
-            <div className={styles.formRow}>
-                <h3><strong>Contato:</strong></h3>
-                <div>
-                    <label>Telefone: </label>
-                    <input type="text" value={contactPhone} onChange={e => setContactPhone(e.target.value)} placeholder="(XX) 9XXXX-XXXX"/>
-                </div>
-                <div>
-                    <label>Email: </label>
-                    <input type="text" value={contactEmail} onChange={e => setContactEmail(e.target.value)} placeholder="exemplo@conecteagro.com"/>
-                </div>
-            </div>
-
-            <div className={styles.formRow}>
-                <textarea type="text" value={description} onChange={e => setDescription(e.target.value)} placeholder="Inserir informações sobre o produto..."/>
-            </div>
-            
-            <div className={styles.formSubmit}>
-                <button className="btn" type="submit">Adicionar produto</button>
-            </div>
-            
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+                <Form.Label>Produto</Form.Label>
+                <Form.Control type="text" value={name} onChange={e => setName(e.target.value)}  />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>Quantidade</Form.Label>
+                <Form.Control type="number" value={quantity} onChange={e => setQuantity(e.target.value)} placeholder="0" />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>Referẽncia</Form.Label>
+                <Form.Control type="text" value={reference} onChange={e => setReference(e.target.value)} placeholder="1 unidade - 100g" />
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>Preço</Form.Label>
+                <Form.Control type="number" value={price} onChange={e => setPrice(e.target.value)}  />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Adicionar produto
+            </Button>
+        </Form>
     </div>
   )
 }
