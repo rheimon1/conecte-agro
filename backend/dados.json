@@ -682,6 +682,28 @@
       "estado": "SP",
       "preco": 2124,
       "imagem": "/fotos/products/abacate1.jpg"
+    },
+    {
+      "nome": "Produto de Teste",
+      "produtorId": 2,
+      "nomeProdutor": "Wallace Ramon",
+      "quantidade": 0,
+      "ref": "1 unidade - 100g",
+      "estado": "SP",
+      "preco": 0.75,
+      "imagem": "/fotos/products/tomate2.jpg",
+      "id": 29
+    },
+    {
+      "nome": "Manjericão",
+      "produtorId": 3,
+      "nomeProdutor": "Cleber Evangelista",
+      "quantidade": "50",
+      "ref": "1 unidade - 300g",
+      "estado": "SP",
+      "preco": "1.25",
+      "imagem": "/fotos/products/tomate2.jpg",
+      "id": 30
     }
   ],
   "transacao": [
